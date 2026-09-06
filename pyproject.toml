@@ -1,21 +1,44 @@
 [project]
 name = "sweaver"
 version = "0.1.0"
-description = "Convert TICRA GRASP .sph coefficients to spin-weighted spherical harmonics for CMB analysis."
+description = "Harmonic-domain manipulation of electomagnetic beams for CMB analysis"
 readme = "README.md"
 authors = [{ name = "Maurizio Tomasi", email = "ziotom78@gmail.com" }]
 requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE.txt"]
+keywords = [
+  "spherical harmonics",
+  "beam pattern",
+  "CMB",
+  "TICRA GRASP",
+  "antenna",
+  "spin-weighted",
+  "cosmology",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Astronomy",
+  "Topic :: Scientific/Engineering :: Physics",
+]
 dependencies = [
   "astropy>=7.2.0",
   "ducc0>=0.40.0",
   "numpy>=1.26.0",
   "scipy>=1.17.0",
   "scipy-stubs~=1.17.0",
-  "typer>=0.21.1",
 ]
 
-[project.scripts]
-sweaver = "sweaver.cli:app"
+[project.urls]
+Homepage = "https://github.com/ziotom78/sweaver"
+Repository = "https://github.com/ziotom78/sweaver"
+Issues = "https://github.com/ziotom78/sweaver/issues"
 
 [build-system]
 requires = ["uv_build>=0.9.26,<0.10.0"]
@@ -47,4 +70,4 @@ testpaths = ["tests"]
 addopts = "--cov=src/sweaver"
 
 [tool.uv_build]
-include = ["src/sweaver/test_data/**/*"]
+include = ["src/sweaver/test_data/**/*", "src/sweaver/py.typed"]

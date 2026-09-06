@@ -1,4 +1,4 @@
-# SWEaver — A converter for TICRA Spherical Wave Expansions
+# SWEaver — Harmonic-domain manipulation of electomagnetic beams for CMB analysis
 
 <center>
 <img src="logo/sweaver-logo.svg" alt="">

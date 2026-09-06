@@ -22,7 +22,7 @@
 #            ##############
 #
 # Copyright © 2026 Maurizio Tomasi
-# This code is licensed under the GPL 2
+# This code is licensed under the GPL 3, or (at your option) any later version
 # See the file LICENSE.txt
 
 from dataclasses import dataclass

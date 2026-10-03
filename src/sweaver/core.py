@@ -463,6 +463,21 @@ class ElectricField:
     def get_alms(
         self, ell: int, m: int
     ) -> tuple[np.complex128, np.complex128, np.complex128, np.complex128]:
+        r"""Return the spin-1 spherical harmonic coefficients
+        associated with the quantum numbers `ell` and `m` that
+        represent the electric field.
+
+        Args:
+            ell (int): the value of :math:`\ell`
+            m (int): the value of :math:`m`
+
+        Returns:
+            - real part of the E-mode coefficient (:math:`a_{\ell m}^{E, \Re}`)
+            - real part of the B-mode coefficient (:math:`a_{\ell m}^{B, \Re}`)
+            - imaginary part of the E-mode coefficient (:math:`a_{\ell m}^{E, \Im}`)
+            - imaginary part of the B-mode coefficient (:math:`a_{\ell m}^{B, \Im}`)
+
+        """
         idx = ElectricField._get_idx(ell, m, lmax=self.lmax)
         return tuple(self.alm_stack[:, idx])
 
@@ -506,12 +521,13 @@ class ElectricField:
                     0.5 * j_ell * (q1_mpos - (-1) * phase_sym * np.conj(q1_mneg))
                 )
 
-    def total_power(self) -> float:
-        """
-        Compute the total integrated power of the electric field over the full sphere
-        using the spherical harmonic coefficients.
+    def total_power_w(self) -> float:
+        """Compute the total integrated power of the electric field
+        over the full sphere using the spherical harmonic
+        coefficients.
 
-        Returns ∫|E|² dΩ.
+        Returns ∫|E|² dΩ, computed in Watts.
+
         """
         # Calculate the absolute square of every coefficient in the stack
         # This covers Real E, Real B, Imag E, and Imag B components.
@@ -2090,20 +2106,20 @@ class Beam:
         cl_b = np.zeros_like(ells, dtype=float)
 
         for i, ell in enumerate(ells):
-            # 1. Termine m = 0 (nessuna simmetria, contato una volta sola)
+            # 1. m = 0 term (no symmetries, counted just once)
             idx_0 = self.get_idx(ell, 0)
             sum_i = np.abs(self.alm_i[idx_0]) ** 2
             sum_e = np.abs(self.alm_e[idx_0]) ** 2
             sum_b = np.abs(self.alm_b[idx_0]) ** 2
 
-            # 2. Termini m > 0 (contati due volte per riflettere anche m < 0)
+            # 2. m > 0 terms (counted twice to account for m < 0)
             for m in range(1, min(ell, self.mmax) + 1):
                 idx = self.get_idx(ell, m)
                 sum_i += 2 * (np.abs(self.alm_i[idx]) ** 2)
                 sum_e += 2 * (np.abs(self.alm_e[idx]) ** 2)
                 sum_b += 2 * (np.abs(self.alm_b[idx]) ** 2)
 
-            # 3. Normalizzazione
+            # 3. Normalization
             cl_i[i] = sum_i / (2 * ell + 1)
             cl_e[i] = sum_e / (2 * ell + 1)
             cl_b[i] = sum_b / (2 * ell + 1)

@@ -53,7 +53,7 @@ def test_total_power_null():
     """A field with zero amplitude everywhere must contain exactly zero power."""
     field = build_test_field(lmax=5, mmax=5, active_modes=[])
 
-    assert field.total_power() == 0.0
+    assert field.total_power_w() == 0.0
 
 
 def test_total_power_m0_only():
@@ -65,7 +65,7 @@ def test_total_power_m0_only():
     # Expected power: |5.0|^2 * 1 = 25.0
     field = build_test_field(lmax=5, mmax=5, active_modes=[(0, 1, 0, 5.0 + 0.0j)])
 
-    np.testing.assert_allclose(field.total_power(), 25.0, atol=1e-12)
+    np.testing.assert_allclose(field.total_power_w(), 25.0, atol=1e-12)
 
 
 def test_total_power_m_positive():
@@ -77,7 +77,7 @@ def test_total_power_m_positive():
     # Expected power: |3.0|^2 * 2 = 18.0
     field = build_test_field(lmax=5, mmax=5, active_modes=[(1, 2, 2, 3.0 + 0.0j)])
 
-    np.testing.assert_allclose(field.total_power(), 18.0, atol=1e-12)
+    np.testing.assert_allclose(field.total_power_w(), 18.0, atol=1e-12)
 
 
 def test_total_power_complex_mixed():
@@ -97,4 +97,4 @@ def test_total_power_complex_mixed():
     field = build_test_field(lmax=5, mmax=5, active_modes=active_modes)
 
     # Total expected power = 5.0 + 32.0 = 37.0
-    np.testing.assert_allclose(field.total_power(), 37.0, atol=1e-12)
+    np.testing.assert_allclose(field.total_power_w(), 37.0, atol=1e-12)

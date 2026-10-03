@@ -1991,7 +1991,8 @@ class Beam:
         stokes_U = np.array(2 * np.real(E_theta * np.conj(E_phi)), dtype=np.float64)
 
         if lmax is None:
-            lmax = electric_field.lmax
+            # If spin-1 is band-limited up to L, then spin-2 is band-limited up to at most 2L
+            lmax = 2 * electric_field.lmax
         if mmax is None:
             mmax = lmax
 

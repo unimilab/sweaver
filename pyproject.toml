@@ -3,7 +3,7 @@ name = "sweaver"
 version = "0.1.0"
 description = "Harmonic-domain manipulation of electomagnetic beams for CMB analysis"
 readme = "README.md"
-authors = [{ name = "Maurizio Tomasi", email = "ziotom78@gmail.com" }]
+authors = [{ name = "Maurizio Tomasi", email = "maurizio.tomasi@unimi.it" }]
 requires-python = ">=3.11"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE.txt"]
@@ -24,6 +24,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Topic :: Scientific/Engineering :: Astronomy",
   "Topic :: Scientific/Engineering :: Physics",
 ]

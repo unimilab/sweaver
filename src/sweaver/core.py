@@ -902,7 +902,7 @@ class ElectricField:
         rz = np.cos(theta)
 
         phase = k0 * (rx * dx_m + ry * dy_m + rz * dz_m)
-        shift_factor = np.exp(1j * phase)
+        shift_factor = np.exp(-1j * phase)
 
         shifted_E_theta = grid_E_theta * shift_factor
         shifted_E_phi = grid_E_phi * shift_factor

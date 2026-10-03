@@ -1477,6 +1477,7 @@ class ElectricField:
 
         Returns:
             Tuple ``(comp1, comp2)`` of complex arrays with shape ``(ntheta,)``.
+
         """
         e1, e2 = self.evaluate_theta_phi_grid_in_frame(
             theta_start_rad=theta_start_rad,

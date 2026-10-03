@@ -945,7 +945,7 @@ class ElectricField:
         theta_rad: np.ndarray,
         phi_rad: np.ndarray,
         polarization: Polarization,
-        epsilon: float = 1e-8,
+        epsilon: float = 1e-12,
         use_ticra_phase: bool = False,
     ) -> tuple[np.ndarray, np.ndarray]:
         """

@@ -2004,6 +2004,7 @@ class Beam:
             spin=0,
             geometry="GL",
             lmax=lmax,
+            mmax=mmax,
         )
 
         alm_pol = ducc0.sht.analysis_2d(
@@ -2011,9 +2012,11 @@ class Beam:
             spin=2,
             geometry="GL",
             lmax=lmax,
+            mmax=mmax,
         )
 
         return cls(
+            frequency_ghz=electric_field.frequency_ghz,
             alm_i=alm_I[0],
             alm_e=alm_pol[0],
             alm_b=alm_pol[1],

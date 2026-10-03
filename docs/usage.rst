@@ -6,7 +6,11 @@ This page provides an overview of how to use SWEaver to load, process, and conve
 1. Basic Information
 --------------------
 
-The first step is to load a `.sph` file and inspect its contents. SWEaver allows you to parse the file and extract the frequency blocks, which contain the :math:`Q_{smn}` coefficients.
+The first step is to load a `.sph` file and inspect its contents. This kind of file is exported by TICRA Tools; you must call the command “Get SWE” and set the name of the output file, as in the following image:
+
+.. image:: _static/ticra-get-swe.png
+
+SWEaver allows you to parse the file and extract the frequency blocks, which contain the :math:`Q_{smn}` coefficients.
 
 .. doctest::
 
@@ -86,6 +90,8 @@ In this example, we extract a 1D cut of the field at a constant azimuthal angle 
     2.50            | 3.2849e-01      | 0.0000e+00      | 0.0000e+00      | 0.0000e+00
     3.75            | 1.8693e-01      | 0.0000e+00      | 0.0000e+00      | 0.0000e+00
     5.00            | 8.4907e-02      | 0.0000e+00      | 0.0000e+00      | 0.0000e+00
+
+Instead of :py:meth:`.ElectricField.evaluate_cut`, one can use :py:meth:`.ElectricField.evaluate_theta_phi_grid` to compute the field over a grid, similar to TICRA Tools’ grids, or even :py:meth:`.ElectricField.evaluate_at_locs`, which computes the field at arbitrary positions.
 
 We can use `matplotlib` to plot the cut of the electric field. Here we evaluate more samples to have a smooth curve:
 

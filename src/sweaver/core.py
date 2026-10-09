@@ -126,7 +126,7 @@ def _canonicalize_theta_phi(
 
         (ϑ, φ), ϑ < 0
 
-    is mapped to
+    must be mapped to
 
         (-ϑ, φ + π)
 
